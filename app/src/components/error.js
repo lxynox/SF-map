@@ -1,6 +1,10 @@
 import React from 'react';
 import { string } from 'prop-types';
 
+/**
+ * Generic error handling component.
+ */
+
 const Error = ({ message, trace }) => (
   <details>
     <summary>Something went wrong</summary>
@@ -9,7 +13,8 @@ const Error = ({ message, trace }) => (
 );
 
 Error.propTypes = {
-  message: string
+  message: string,
+  trace: string
 }; 
 
 export default Error;

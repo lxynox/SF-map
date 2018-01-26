@@ -3,7 +3,15 @@ import { bool, node, func } from 'prop-types'
 import { connect } from 'react-redux';
 import spinnerPng from '../assets/vue.png'
 
-const LoadingIndicator = ({ 
+/**
+ * Wrapper component component in track of *in-flight* API request.
+ * 
+ *   When API request on flight - display Spinner
+ *   When API request fails - display Error
+ *   When API request resovles with 200 - display children it wraps
+ */
+
+const RequestTracker = ({ 
   isRequesting, 
   isRequestFailed,
   children,
@@ -19,7 +27,7 @@ const LoadingIndicator = ({
   return children;
 };
 
-LoadingIndicator.defaultProps = {
+RequestTracker.defaultProps = {
   Spinner: (props) => (
     <img src={spinnerPng} alt='loading...' style={{ 
       position: 'absolute', 
@@ -34,7 +42,7 @@ LoadingIndicator.defaultProps = {
   Failure: (props) => <h1 {...props}>Network failed!</h1>,
 };
 
-LoadingIndicator.propTypes = {
+RequestTracker.propTypes = {
   isRequesting: bool,
   isRequestFailed: bool,
   children: node,
@@ -51,4 +59,4 @@ const stateProps = (state, ownProps) => {
   };
 };
 
-export default connect(stateProps)(LoadingIndicator);
+export default connect(stateProps)(RequestTracker);

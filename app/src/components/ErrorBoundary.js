@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { node } from 'prop-types';
-import Error from './error';
+import Error from './Error';
+
+/**
+ * High level component catches ui error anywhere in children's render tree
+ * and displays a fallback UI (<Error/>).
+ */
 
 class ErrorBoundary extends Component {
   static propTypes = {

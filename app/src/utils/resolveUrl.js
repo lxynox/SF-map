@@ -1,4 +1,4 @@
-import { BASE_URI } from '../constants';
+import { BASE_URI } from '../constants/api';
 
 const createQueryString = (params) => 
   Object.keys(params)

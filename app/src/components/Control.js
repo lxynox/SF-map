@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import { func, array } from 'prop-types';
 
 import * as actionCreators from '../actions/routes';
+import { getRoutes } from '../store/selectors';
+
+/**
+ * Html control for user to select which route's vehicles to paint.
+ */
 
 class Control extends Component {
 
@@ -74,19 +79,8 @@ class Control extends Component {
 // redux bindings
 
 const stateProps = (state) => {
-  const { routes: { ids, selectedRoutes }} = state;
-  const routes = Object.keys(ids).map(id => {
-    const route = ids[id];
-    if (selectedRoutes.indexOf(id) !== -1) {
-      route.isChecked = true;
-    } else {
-      route.isChecked = false;
-    }
-    return route;
-  });
-
   return {
-    routes
+    routes: getRoutes(state)
   };
 }
 

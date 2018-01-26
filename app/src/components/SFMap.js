@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { array, func, object } from 'prop-types';
 import { connect } from 'react-redux';
 
-import LoadingIndicator from './LoadingIndicator';
-import { VEHICLE_API_NAME } from '../constants';
+import RequestTracker from './RequestTracker';
+import { VEHICLE_API_NAME } from '../constants/api';
 import * as actionCreators from '../actions/vehicles';
+import { getVisibleVehicles } from '../store/selectors';
 
-class BaseMap extends Component {
+class SFMap extends Component {
 
   static propTypes = {
     selectedRoutes: array,
@@ -61,12 +62,12 @@ class BaseMap extends Component {
 
   render() {
     return (
-      <LoadingIndicator endpoint={VEHICLE_API_NAME}>
+      <RequestTracker endpoint={VEHICLE_API_NAME}>
         <svg width="800" height="800" viewBox="0 0 800 800">
           {this.renderMap()}
           {this.renderVehicles()}
         </svg>
-      </LoadingIndicator>
+      </RequestTracker>
     );
   }
 }
@@ -74,34 +75,9 @@ class BaseMap extends Component {
 // redux bindings
 
 const stateProps = (state) => {
-  const {
-    routes: {
-      ids: routes,
-      selectedRoutes: selectedRouteIds
-    },
-    vehicles: {
-      ids: vehicles
-    }
-  } = state;
-
-  const routeVehiclesMap = Object.keys(vehicles).reduce((obj, id) => {
-    const { routeTag: tag } = vehicles[id];
-    if (!obj.hasOwnProperty(tag)) obj[tag] = [];
-    obj[tag].push(id);
-    return obj;
-  }, {});
-
-  const visibleVehicles = [];
-  selectedRouteIds.forEach(id => {
-    const { color } = routes[id];
-    const vehicleIds = routeVehiclesMap[id];
-    const vehiclesWithColor = vehicleIds.map(id => ({ ...vehicles[id], color }));
-    if (Array.isArray(vehicleIds)) visibleVehicles.push(...vehiclesWithColor);
-  });
-
   return {
-    visibleVehicles
+    visibleVehicles: getVisibleVehicles(state)
   };
 };
 
-export default connect(stateProps, actionCreators)(BaseMap);
+export default connect(stateProps, actionCreators)(SFMap);

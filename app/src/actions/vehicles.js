@@ -1,11 +1,11 @@
-import { VEHICLE_API_NAME } from '../constants';
+import { VEHICLE_API_NAME } from '../constants/api';
 import { UPDATE_VEHICLES } from '../constants/ActionTypes';
-import { doFetch } from '../utils';
+import doFetch from '../utils/doFetch';
 
 let fetchVehiclesTimer;
 const FETCH_INTERVAL = 15 * 1000;
 
-// Action creators
+// action creators
 
 const updateVehicles = (lastTime, vehicles) => ({
   type: UPDATE_VEHICLES,
@@ -13,7 +13,7 @@ const updateVehicles = (lastTime, vehicles) => ({
   lastTime
 });
 
-// Thunks
+// thunks
 
 const onUnmount = () =>
   (dispatch, getState) => {

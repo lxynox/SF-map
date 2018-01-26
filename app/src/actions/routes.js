@@ -1,8 +1,8 @@
 import { UPDATE_ROUTES, SELECT_ROUTE, UNSELECT_ROUTE } from '../constants/ActionTypes';
-import { ROUTE_API_NAME }  from '../constants';
-import { doFetch } from '../utils';
+import { ROUTE_API_NAME }  from '../constants/api';
+import doFetch from '../utils/doFetch';
 
-// Action creators
+// action creators
 
 const updateRoutes = (routes) => ({
   type: UPDATE_ROUTES,
@@ -19,7 +19,7 @@ const unselectRoute = (route) => ({
   route
 });
 
-// Thunks
+// thunks
 
 const fetchRoutes = () =>
   async (dispatch, getState) => {

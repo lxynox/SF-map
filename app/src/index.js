@@ -4,7 +4,7 @@ import { geoMercator, geoPath } from 'd3-geo';
 import { Provider } from 'react-redux';
 
 import App from './App';
-import { doFetch } from './utils';
+import doFetch from './utils/doFetch';
 import configureStore from './store';
 import registerServiceWorker from './registerServiceWorker';
 

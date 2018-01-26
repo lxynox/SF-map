@@ -1,5 +1,7 @@
 import { REQUEST, RECEIVE_SUCCESS, RECEIVE_FAILURE } from '../constants/ActionTypes';
 
+// action creators
+
 const request = (endpoint) => ({
   type: REQUEST,
   endpoint

@@ -30,7 +30,7 @@ class App extends Component {
             backgroundColor: '#000000',
             fontFamily: 'Acme, sans-serif'
           }}>
-            <h1 className="App-title">SF Muni Vehicles</h1>
+            <h1>SF Muni Vehicles</h1>
           </header>
           <div style={{ display: 'flex', flexWrap: 'nowrap' }}>
             <div style={{ minWidth: 800, padding: '1rem' }}>

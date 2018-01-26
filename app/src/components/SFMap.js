@@ -44,7 +44,7 @@ class SFMap extends Component {
   renderVehicles() {
     const { visibleVehicles, projection } = this.props;
     return (
-      <g className="">
+      <g>
         {visibleVehicles.map(({ lon, lat, color }, index) => (
           <circle
             key={`circle-${index}`}
@@ -53,7 +53,6 @@ class SFMap extends Component {
             r={10}
             fill={color}
             stroke="#FFFFFF"
-            className="marker"
           />
         ))}
       </g>

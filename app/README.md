@@ -2,7 +2,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 It uses `redux` for deterministic state management and `react` for declarative ui rendering.
 
-Simply `yarn start` / `npm start` and will be ready at: [browser](http://localhost:3000).
+Simply 
+
+```bash
+$ yarn // or `npm i`
+$ yarn start // or `npm start`
+```
+
+the app will be ready at: [browser](http://localhost:3000).
 
 ### Folder Structure
 

@@ -65,6 +65,7 @@ class Control extends Component {
   render() {
     return (
       <div style={{
+        flex: 1,
         display: 'flex',
         flexFlow: 'row wrap',
         justifyContent: 'space-around',

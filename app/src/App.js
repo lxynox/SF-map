@@ -38,27 +38,22 @@ class App extends Component {
 
     return (
       <ErrorBoundary>
-        <div style={{
-          textAlign: 'center',
-          color: 'lightgrey',
-          height: '100%',
-          background: 'linear-gradient(90deg, #ebebeb 66%, #cab7d3)'
-        }}>
+        <div style={{ background: 'linear-gradient(90deg, #ebebeb 66%, #cab7d3)' }}>
           <header style={{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             backgroundColor: '#000000',
-            fontFamily: 'Acme, sans-serif'
+            color: 'lightgrey',
+            fontFamily: 'Acme, sans-serif',
+            textAlign: 'center',
           }}>
             <h1>SF Muni Vehicles</h1>
           </header>
-          <div style={{ display: 'flex', flexWrap: 'nowrap' }}>
-            <div style={{ minWidth: 800, padding: '1rem' }}>
-              <SFMap mapData={mapData} pathGenerator={pathGenerator} projection={projection.bind(this)} />
-            </div>
+          <main>
+            <SFMap mapData={mapData} pathGenerator={pathGenerator} projection={projection.bind(this)} />
             <Control />
-          </div>
+          </main>
         </div>
       </ErrorBoundary>
     );

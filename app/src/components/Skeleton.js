@@ -6,7 +6,7 @@ const Skeleton = () => {
        <header className='header'>
         <div className='header__skeleton' />
        </header>
-       <main className='main' />
+       <main className='main__skeleton' />
     </React.Fragment>
   )
 };

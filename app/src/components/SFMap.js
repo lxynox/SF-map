@@ -61,12 +61,18 @@ class SFMap extends Component {
 
   render() {
     return (
-      <RequestTracker endpoint={VEHICLE_API_NAME}>
-        <svg width="800" height="800" viewBox="0 0 800 800">
-          {this.renderMap()}
-          {this.renderVehicles()}
-        </svg>
-      </RequestTracker>
+      <div style={{
+        flex: 3,
+        width: '100vw',
+        padding: '2rem 2rem'
+      }}>
+        <RequestTracker endpoint={VEHICLE_API_NAME}>
+          <svg width="80%" height="80%" viewBox="0 0 800 800">
+            {this.renderMap()}
+            {this.renderVehicles()}
+          </svg>
+        </RequestTracker>
+      </div>
     );
   }
 }

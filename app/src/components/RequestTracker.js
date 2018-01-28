@@ -29,15 +29,14 @@ const RequestTracker = ({
 
 RequestTracker.defaultProps = {
   Spinner: (props) => (
-    <img src={spinnerPng} alt='loading...' style={{ 
-      position: 'absolute', 
-      top: '50%', 
-      left: '50%',
-      animation: 'spinner-spin infinite 5s linear',
-      marginTop: -40,
-      marginLeft: -40,
-      height: 80
-    }} />
+    <div style={{
+      height: '80vh', 
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center' 
+    }}>
+      <img src={spinnerPng} width="100" alt='loading...' style={{ animation: 'spinner-spin infinite 5s linear' }} />
+    </div>
   ),
   Failure: (props) => <h1 {...props}>Network failed!</h1>,
 };

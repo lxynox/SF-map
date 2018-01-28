@@ -69,6 +69,7 @@ class Control extends Component {
         flexFlow: 'row wrap',
         justifyContent: 'space-around',
         padding: '1rem 2rem 1rem 1rem',
+        fontFamily: 'Menlo, monospace'
       }}>
         {this.renderRadios()}
       </div>

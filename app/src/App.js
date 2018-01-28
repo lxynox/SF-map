@@ -1,27 +1,48 @@
 import React, { Component } from 'react';
 
-import * as mapData from './data';
 import ErrorBoundary from './components/ErrorBoundary';
 import Control from './components/Control';
 import SFMap from './components/SFMap';
+import Skeleton from './components/Skeleton';
 
 /**
  * Top level component tree, css-in-js used for ease of styling.
  * 
  * <Root>
- *   <Map/>
+ *   <SFMap/>
  *   <Control/>
  * </Root>
  */
 
 class App extends Component {
+  state = {
+    mapData: null
+  }
+
+  componentWillMount() {
+    const lazyLoadMapData = async () => {
+      const mapData = await import(/* webpackChunkName: "mapData" */ './data/index.js');
+      this.setState({ mapData });
+    };
+
+    lazyLoadMapData();
+  }
+
   render() {
     const { projection,  pathGenerator } = this.props;
+    const { mapData } = this.state;
+
+    if (!mapData) {
+      return <Skeleton/>;
+    }
+
     return (
       <ErrorBoundary>
         <div style={{
           textAlign: 'center',
-          color: '#cccccc'
+          color: 'lightgrey',
+          height: '100%',
+          background: 'linear-gradient(90deg, #ebebeb 66%, #cab7d3)'
         }}>
           <header style={{
             display: 'flex',
